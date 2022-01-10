@@ -547,7 +547,7 @@
 							}
 						})
 						.then(res => {
-							if (res.data.status == 200) {
+							if (res.data.status == 1) {
 								// alert("OK");
 								var orderId = res.data.data;
 								// 判断是否微信还是支付宝支付
@@ -656,7 +656,7 @@
 					var serverUrl = app.serverUrl;
 					axios.defaults.withCredentials = true;
 					axios.post(
-						serverUrl + '/address/setDefalut?userId=' + userInfo.id + "&addressId=" + addressId,
+						serverUrl + '/userAddress/setDefault?userId=' + userInfo.id + "&addressId=" + addressId,
 						{},
 						{
 							headers: {
@@ -665,7 +665,7 @@
 							}
 						})
 						.then(res => {
-							if (res.data.status == 200) {
+							if (res.data.status == 1) {
 								this.renderUserAddressList();
 							} else {
 								alert(res.data.msg);
