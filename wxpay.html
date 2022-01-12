@@ -180,7 +180,7 @@
                     var paymentServerUrl = app.paymentServerUrl;
 					axios.defaults.withCredentials = true;
 					axios.post(
-                            paymentServerUrl + '/payment/getWXPayQRCode?merchantUserId=' + userInfo.id + "&merchantOrderId=" + orderId, 
+                            paymentServerUrl + '/qrCodeController/getWXPayQRCode?merchantUserId=' + userInfo.id + "&merchantOrderId=" + orderId, 
 							{},
 							{
 								headers: {
@@ -189,7 +189,7 @@
 								}
 							})
 							.then(res => {
-								if (res.data.status == 200) {
+								if (res.data.status == 1) {
                                     var paymentInfo = res.data.data;
                                     this.paymentInfo = paymentInfo;
                                     // qrCodeUrl
@@ -198,7 +198,8 @@
                                     $('#wxqrcode-display').qrcode({
                                         width: 200,
                                         height:200,
-                                        text: paymentInfo.qrCodeUrl
+                                        // text: paymentInfo.qrCodeUrl
+										text: "https://mp.csdn.net"
                                     });
 
 
